@@ -1,4 +1,4 @@
-import { useLocalStore } from "mobx-react";
+import { useLocalObservable } from "mobx-react";
 import { observable } from "mobx";
 
 export interface Command<Params = any> {
@@ -17,7 +17,7 @@ export const CommandInvoker = <Params = any>(
   };
 };
 
-export const useCommand = <T extends Command>(command: () => T): T => {
-  const store = useLocalStore(() => observable.box<T>());
-  return store.get() as T;
+export const useCommand = <T extends Command>(command: () => T) => {
+  const store = useLocalObservable(() => observable.box<T>(command()));
+  return store.get();
 };

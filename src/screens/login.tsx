@@ -27,15 +27,17 @@ export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
 
     return (
       <View>
-        <Text>Welcome to ACME Ltd</Text> <Text>Please sign in...</Text>
+        <View>
+          <Text>Welcome to ACME Ltd</Text>
+        </View>
         <View>
           <Text>Email</Text>
           <TextInput onChangeText={setEmail} value={email} />
         </View>
         <View>
           <Text>Password</Text>
-          <TextInput onChangeText={setPassword} value={password} />{" "}
-        </View>{" "}
+          <TextInput onChangeText={setPassword} value={password} />
+        </View>
         <View>
           <Text>Remember Me</Text>
           <Switch
