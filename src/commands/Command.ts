@@ -1,5 +1,5 @@
-import { useLocalObservable } from "mobx-react";
-import { observable } from "mobx";
+import {useLocalObservable} from 'mobx-react';
+import {observable} from 'mobx';
 
 export interface Command<Params = any> {
   execute(params?: Params): Promise<void>;
@@ -8,7 +8,7 @@ export interface Command<Params = any> {
 
 export const CommandInvoker = <Params = any>(
   command: Command<Params>,
-  params?: Params
+  params?: Params,
 ) => {
   return () => {
     if (command.canExecute(params)) {

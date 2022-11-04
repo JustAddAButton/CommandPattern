@@ -1,9 +1,9 @@
-import { observable } from "mobx";
-import { persist } from "mobx-persist";
-import api from "../api/api";
-import { LoginResponse } from "../api/login";
+import {observable} from 'mobx';
+import {persist} from 'mobx-persist';
+import api from '../api/api';
+import {LoginResponse} from '../api/login';
 
-declare type LoginAction = "success" | "failure";
+declare type LoginAction = 'success' | 'failure';
 
 export interface LoginResult {
   action: LoginAction;
@@ -34,13 +34,13 @@ export class UserModel {
       this.lastUserEmail = email;
 
       return {
-        action: "success",
+        action: 'success',
       };
     }
 
     return {
-      action: "failure",
-      error: "Oupsie Daisy. Please try again.",
+      action: 'failure',
+      error: 'Oupsie Daisy. Please try again.',
     };
   }
 }

@@ -1,6 +1,6 @@
-import { observer } from "mobx-react";
-import * as React from "react";
-import { useState } from "react";
+import {observer} from 'mobx-react';
+import * as React from 'react';
+import {useState} from 'react';
 import {
   View,
   Text,
@@ -8,18 +8,18 @@ import {
   Button,
   ActivityIndicator,
   Switch,
-} from "react-native";
-import { useCommand, CommandInvoker } from "../commands/Command";
-import { ForgotPasswordCommand } from "../commands/ForgotPasswordCommand";
-import { User } from "../models/User";
-import { RememberMeCommand } from "../commands/RememberMeCommand";
-import { ILoginScreenProps } from "./ILoginScreenProps";
-import { LoginCommand } from "../commands/LoginCommand";
+} from 'react-native';
+import {useCommand, CommandInvoker} from '../commands/Command';
+import {ForgotPasswordCommand} from '../commands/ForgotPasswordCommand';
+import {User} from '../models/User';
+import {RememberMeCommand} from '../commands/RememberMeCommand';
+import {ILoginScreenProps} from './ILoginScreenProps';
+import {LoginCommand} from '../commands/LoginCommand';
 
 export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
-  (props) => {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+  props => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
 
     const rememberMeCommand = useCommand(() => new RememberMeCommand());
     const forgotPasswordCommand = useCommand(() => new ForgotPasswordCommand());
@@ -28,7 +28,7 @@ export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
     return (
       <View>
         <View>
-          <Text>Welcome to ACME Ltd</Text>
+          <Text>{props.title}</Text>
         </View>
         <View>
           <Text>Email</Text>
@@ -42,7 +42,7 @@ export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
           <Text>Remember Me</Text>
           <Switch
             value={User.rememberMe}
-            onValueChange={(value) => {
+            onValueChange={value => {
               CommandInvoker(rememberMeCommand, {
                 rememberMe: value,
               });
@@ -54,7 +54,7 @@ export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
             Forgot Password
           </Text>
         </View>
-        <ActivityIndicator animating={loginCommand.pending} size={"large"} />
+        <ActivityIndicator animating={loginCommand.pending} size={'large'} />
         {loginCommand.error ? (
           <View>
             <Text>{loginCommand.error}</Text>
@@ -75,5 +75,5 @@ export const LoginScreen: React.FunctionComponent<ILoginScreenProps> = observer(
         />
       </View>
     );
-  }
+  },
 );

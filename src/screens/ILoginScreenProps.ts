@@ -1,1 +1,3 @@
-export interface ILoginScreenProps {}
+export interface ILoginScreenProps {
+  title: string;
+}

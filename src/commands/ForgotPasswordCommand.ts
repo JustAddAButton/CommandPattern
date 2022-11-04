@@ -1,5 +1,5 @@
-import { action } from "mobx";
-import { Command } from "./Command";
+import {action} from 'mobx';
+import {Command} from './Command';
 
 export interface ForgotPasswordCommandParams {}
 
